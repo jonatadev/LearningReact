@@ -1,10 +1,14 @@
-name: Learning React Workflow
+name: React CI Workflow
 
 on:
   push:
     branches:
       - main
   pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 jobs:
   lint-html:
@@ -19,11 +23,11 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install HTML Linter
-        run: npm install -g htmlhint
+      - name: Install HTML Linter Locally
+        run: npm install htmlhint
 
       - name: Run HTML Linter
-        run: htmlhint "**/*.html"
+        run: htmlhint '**/*.html'
 
   build-react:
     name: Build React Project
@@ -46,7 +50,7 @@ jobs:
       - name: Run Tests (Optional)
         run: npm test
 
-  summarize-technologies:
+  resumir-tecnologias:
     name: Tecnologias Utilizadas no Projeto
     runs-on: ubuntu-latest
     steps:
