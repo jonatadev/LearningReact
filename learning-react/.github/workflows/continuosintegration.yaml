@@ -5,8 +5,10 @@ on:
     branches:
       - main
   pull_request:
-    branches:
-      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 jobs:
   lint-html:
@@ -49,7 +51,6 @@ jobs:
         run: npm test
 
   resumir-tecnologias:
-    # This job summarizes the technologies used in the project.
     name: Tecnologias Utilizadas no Projeto
     runs-on: ubuntu-latest
     steps:
@@ -63,4 +64,3 @@ jobs:
           echo "- Node.js"
           echo "- HTML"
           echo "- GitHub Actions"
-          
