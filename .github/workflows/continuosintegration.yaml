@@ -15,10 +15,14 @@ jobs:
     steps:    
     - name: Checkout code
       uses: actions/checkout@v3
-    
-    - name: Validate HTML
-      uses: validator/validator-action@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
       with:
-        files: |
-          index.html
- 
+        node-version: 18
+
+    - name: Install HTML Validator
+      run: npm install -g html-validator-cli
+
+    - name: Validate HTML
+      run: html-validator --file=index.html --verbose
