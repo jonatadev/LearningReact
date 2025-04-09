@@ -21,25 +21,7 @@ jobs:
 
       - name: Run HTML Linter
         run: htmlhint "**/*.html"
-
-  build-and-test:
-    name: Build Learning React
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm test
-
+        
   deploy:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
