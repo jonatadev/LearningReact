@@ -47,7 +47,7 @@ jobs:
         run: zip -r build.zip build/
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: build-artifact
           path: build.zip
