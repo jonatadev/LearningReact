@@ -9,40 +9,36 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:    
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
-
-    - name: Install HTML Validator
-      run: npm install html-validator-cli
-
-    - name: Validação do HTML
-      run: npx html-validator --file=index.html --verbose
-
   lint-html:
-    needs: build
+    name: Lint HTML
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
+      - name: Install HTMLHint
+        run: npm install -g htmlhint
 
-      run: |
-        npm install --save-dev htmlhint
-        npm install -g htmlhint
+      - name: Run HTML Linter
+        run: htmlhint "**/*.html"
 
-    - name: Lint HTML
-      run: htmlhint index.html    
+  build-and-test:
+    name: Build and Verify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build project
+        run: npm run build
