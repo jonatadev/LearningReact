@@ -23,7 +23,7 @@ jobs:
         run: htmlhint "**/*.html"
 
   build-and-test:
-    name: Build and Verify
+    name: Build Learning React
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -39,18 +39,6 @@ jobs:
 
       - name: Run tests
         run: npm test
-
-      - name: Build project
-        run: npm run build
-
-      - name: Zip build artifacts
-        run: zip -r build.zip build/
-
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v3.1.2
-        with:
-          name: build-artifact
-          path: build.zip
 
   deploy:
     name: Deploy to GitHub Pages
