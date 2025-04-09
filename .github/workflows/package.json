@@ -1,0 +1,23 @@
+{
+  "name": "learning-react",
+  "version": "1.0.0",
+  "description": "Learning React To work with backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve .",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "build": "echo 'No build step defined'"
+  },
+  "keywords": ["react", "learning"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "eslint-plugin-react": "^7.0.0",
+    "htmlhint": "^0.16.0"
+  }
+}

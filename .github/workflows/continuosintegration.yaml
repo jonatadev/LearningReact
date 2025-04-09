@@ -42,3 +42,4 @@ jobs:
 
       - name: Run React Linter
         run: npx eslint "**/*.{js,jsx,ts,tsx}"
+        
