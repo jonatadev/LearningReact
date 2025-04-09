@@ -1,0 +1,62 @@
+name: Learning React Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  lint-html:
+    name: Lint HTML Files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install HTML Linter
+        run: npm install -g htmlhint
+
+      - name: Run HTML Linter
+        run: htmlhint "**/*.html"
+
+  build-react:
+    name: Build React Project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Run Tests (Optional)
+        run: npm test
+
+  summarize-technologies:
+    name: Tecnologias Utilizadas no Projeto
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Summarize Technologies
+        run: |
+          echo "Technologies used in this project:"
+          echo "- React"
+          echo "- Node.js"
+          echo "- HTML"
+          echo "- GitHub Actions"
