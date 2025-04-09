@@ -24,3 +24,18 @@ jobs:
 
       - name: Run HTML Linter
         run: htmlhint "**/*.html"
+
+  summarize-technologies:
+    name: Tecnolgias Utilizadas no Projeto
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Summarize Technologies
+        run: |
+          echo "Technologies used in this project:"
+          echo "- React"
+          echo "- Node.js"
+          echo "- HTML"
+          echo "- GitHub Actions"
